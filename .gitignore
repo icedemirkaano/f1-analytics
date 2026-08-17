@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Kimlik bilgileri
+*.json
+profiles.yml
+
+# dbt
+target/
+dbt_packages/
+logs/
