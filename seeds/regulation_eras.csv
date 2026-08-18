@@ -1,0 +1,76 @@
+season_year,era_id,era_name,era_short,engine_formula,is_era_first_season,is_anomalous_season,notes
+1950,1,On motor donemi,PreRear,Muhtelif,1,0,Sampiyonanin ilk yili
+1951,1,On motor donemi,PreRear,Muhtelif,0,0,
+1952,1,On motor donemi,PreRear,F2 formulu,0,1,F2 araclariyla kosuldu
+1953,1,On motor donemi,PreRear,F2 formulu,0,1,F2 araclariyla kosuldu
+1954,1,On motor donemi,PreRear,2.5L,0,0,Yeni motor formulu
+1955,1,On motor donemi,PreRear,2.5L,0,1,Le Mans faciasi sonrasi yarislar iptal
+1956,1,On motor donemi,PreRear,2.5L,0,0,
+1957,1,On motor donemi,PreRear,2.5L,0,0,
+1958,2,Arka motor gecisi,RearEngine,2.5L,1,0,Cooper devrimi konstruktor sampiyonasi basladi
+1959,2,Arka motor gecisi,RearEngine,2.5L,0,0,
+1960,2,Arka motor gecisi,RearEngine,2.5L,0,0,
+1961,3,1.5L donemi,1500cc,1.5L,1,0,Motor formulu kucultuldu
+1962,3,1.5L donemi,1500cc,1.5L,0,0,
+1963,3,1.5L donemi,1500cc,1.5L,0,0,
+1964,3,1.5L donemi,1500cc,1.5L,0,0,
+1965,3,1.5L donemi,1500cc,1.5L,0,0,
+1966,4,3.0L guc yarisi,3000cc,3.0L,1,0,Motor hacmi ikiye katlandi
+1967,4,3.0L guc yarisi,3000cc,3.0L,0,0,Cosworth DFV geldi
+1968,4,3.0L guc yarisi,3000cc,3.0L,0,0,Kanatlar ve sponsorluk geldi
+1969,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1970,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1971,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1972,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1973,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1974,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1975,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1976,4,3.0L guc yarisi,3000cc,3.0L,0,0,
+1977,5,Ground effect ilk donem,GE77,3.0L,1,0,Lotus 78 yer etkisi
+1978,5,Ground effect ilk donem,GE77,3.0L,0,0,Lotus 79
+1979,5,Ground effect ilk donem,GE77,3.0L,0,0,
+1980,5,Ground effect ilk donem,GE77,3.0L,0,0,
+1981,5,Ground effect ilk donem,GE77,3.0L,0,0,Etek yasagi
+1982,5,Ground effect ilk donem,GE77,3.0L,0,0,
+1983,6,Turbo donemi,Turbo,1.5L turbo,1,0,Duz taban zorunlulugu turbo hakimiyeti
+1984,6,Turbo donemi,Turbo,1.5L turbo,0,0,Yakit siniri 220L
+1985,6,Turbo donemi,Turbo,1.5L turbo,0,0,
+1986,6,Turbo donemi,Turbo,1.5L turbo,0,0,Tum takimlar turbo
+1987,6,Turbo donemi,Turbo,1.5L turbo,0,0,
+1988,6,Turbo donemi,Turbo,1.5L turbo,0,0,Turbo son yili
+1989,7,Atmosferik donus,NA89,3.5L,1,0,Turbo yasaklandi
+1990,7,Atmosferik donus,NA89,3.5L,0,0,
+1991,7,Atmosferik donus,NA89,3.5L,0,0,
+1992,7,Atmosferik donus,NA89,3.5L,0,0,Aktif suspansiyon zirvesi
+1993,7,Atmosferik donus,NA89,3.5L,0,0,
+1994,7,Atmosferik donus,NA89,3.5L,0,1,Elektronik yardimlar yasaklandi Senna kazasi
+1995,8,3.0L V10,V10,3.0L V10,1,0,Motor hacmi 3.0L guvenlik reformlari
+1996,8,3.0L V10,V10,3.0L V10,0,0,
+1997,8,3.0L V10,V10,3.0L V10,0,0,
+1998,8,3.0L V10,V10,3.0L V10,0,0,Oluklu lastik ve dar arac
+1999,8,3.0L V10,V10,3.0L V10,0,0,
+2000,8,3.0L V10,V10,3.0L V10,0,0,
+2001,9,Tek motor kurali,V10Restricted,3.0L V10,1,0,Elektronik yardimlar geri geldi
+2002,9,Tek motor kurali,V10Restricted,3.0L V10,0,0,
+2003,9,Tek motor kurali,V10Restricted,3.0L V10,0,0,Tek tur siralama formati puan sistemi degisti
+2004,9,Tek motor kurali,V10Restricted,3.0L V10,0,0,Tek motor tum hafta sonu
+2005,9,Tek motor kurali,V10Restricted,3.0L V10,0,0,Tek lastik seti tum yaris
+2006,10,2.4L V8,V8,2.4L V8,1,0,Motor formulu degisimi
+2007,10,2.4L V8,V8,2.4L V8,0,0,Tek lastik tedarikcisi Bridgestone
+2008,10,2.4L V8,V8,2.4L V8,0,0,
+2009,11,Aero devrimi,Aero09,2.4L V8,1,0,Radikal aero kisitlamasi KERS cift difuzor
+2010,12,Yakit ikmali yasagi,NoRefuel,2.4L V8,1,0,Pit stop stratejisi tamamen degisti
+2011,13,DRS ve Pirelli,DRS,2.4L V8,1,0,DRS geldi yuksek asinmali lastik
+2012,13,DRS ve Pirelli,DRS,2.4L V8,0,0,
+2013,13,DRS ve Pirelli,DRS,2.4L V8,0,0,
+2014,14,Hibrit turbo,Hybrid,1.6L V6 turbo,1,0,En buyuk motor degisimi ERS
+2015,14,Hibrit turbo,Hybrid,1.6L V6 turbo,0,0,
+2016,14,Hibrit turbo,Hybrid,1.6L V6 turbo,0,0,
+2017,15,Genis araclar,Wide,1.6L V6 turbo,1,0,Arac ve lastik genisligi artti
+2018,15,Genis araclar,Wide,1.6L V6 turbo,0,0,
+2019,15,Genis araclar,Wide,1.6L V6 turbo,0,0,
+2020,15,Genis araclar,Wide,1.6L V6 turbo,0,1,COVID kisaltilmis takvim cift yarislar
+2021,15,Genis araclar,Wide,1.6L V6 turbo,0,0,Butce tavani taban kisitlamasi
+2022,16,Ground effect donusu,GroundEff,1.6L V6 turbo,1,0,Yeni aero felsefesi 18 inc lastik
+2023,16,Ground effect donusu,GroundEff,1.6L V6 turbo,0,0,
+2024,16,Ground effect donusu,GroundEff,1.6L V6 turbo,0,0,
