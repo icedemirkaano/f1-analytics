@@ -19,3 +19,4 @@ sources:
       - name: seasons
       - name: sprint_results
       - name: status
+      - name: race_weather

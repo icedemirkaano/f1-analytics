@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: stg_results
+    description: Yarış sonuçları, sürücü-yarış granülaritesinde
+    columns:
+      - name: result_id
+        description: Birincil anahtar
+        tests: [unique, not_null]
+      - name: race_id
+        description: races tablosuna yabancı anahtar
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_races')
+                field: race_id
+
+      - name: constructor_id
+        description: constructors tablosuna yabancı anahtar
+        tests: [not_null]
+      - name: grid_position
+        description: >
+          Başlangıç grid pozisyonu. 0 = pit lane'den başlangıç,
+          en kötü pozisyon anlamına gelir, en iyi değil.
+      - name: position_order
+        description: >
+          Bitiş sırası, her kayıtta dolu. DNF olanlar da sıralanır.
+          Podyum tanımı bu sütun üzerinden yapılır (<= 3).
+      - name: finish_position
+        description: >
+          Resmi bitiş pozisyonu. Yarışı bitirmeyenlerde NULL.
+          Toplam 10.953 NULL kayıt var.
+      - name: podium_flag
+        description: position_order <= 3 ise true — model hedef değişkeni
+      - name: race_ms
+        description: Toplam yarış süresi (ms). Sadece kazananda dolu.
+
+  - name: stg_qualifying
+    description: Sıralama turu sonuçları. 1996-2002 arası eksik.
+    columns:
+      - name: qualify_id
+        tests: [unique, not_null]
+      - name: quali_position
+        description: Sıralama turu sonucu pozisyon
+      - name: best_quali_ms
+        description: >
+          q3, q2, q1 sırasıyla ilk dolu olanın milisaniye karşılığı.
+          Sürücünün o hafta sonu en iyi sıralama turu performansı.
+
+  - name: stg_races
+    columns:
+      - name: race_id
+        tests: [unique, not_null]
+      - name: season_year
+        description: Sezon yılı, 1950-2024
+      - name: round_number
+        description: Sezon içi yarış sırası
+
+  - name: stg_status
+    description: DNF ve bitiş durumlarının 5 kategoriye gruplanmış hali
+    columns:
+      - name: status_id
+        tests: [unique, not_null]
+      - name: status_group
+        description: >
+          finished, finished_lapped, dnf_mechanical, dnf_incident,
+          dnf_other, dnf_team_or_external.
+          dnf_other içinde yarışa hiç başlamamış kayıtlar da var.
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['finished', 'finished_lapped', 'dnf_mechanical',
+                         'dnf_incident', 'dnf_other', 'dnf_team_or_external']
+
+  - name: stg_drivers
+    columns:
+      - name: driver_id
+        tests: [unique, not_null]
+
+  - name: stg_constructors
+    columns:
+      - name: constructor_id
+        tests: [unique, not_null]
+
+  - name: stg_circuits
+    columns:
+      - name: circuit_id
+        tests: [unique, not_null]
