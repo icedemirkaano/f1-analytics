@@ -87,3 +87,31 @@ models:
     columns:
       - name: circuit_id
         tests: [unique, not_null]
+  - name: stg_race_weather
+    description: >
+      Yarış günü hava durumu. Open-Meteo Historical API'den çekildi.
+      Ölçüm penceresi: yarış başlangıç saati + sonraki 2 saat.
+    columns:
+      - name: race_id
+        description: races tablosuna yabancı anahtar
+        tests: [unique, not_null]
+      - name: precip_total_mm
+        description: 3 saatlik pencerede toplam yağış (mm)
+      - name: weather_condition
+        description: >
+          Üç kademeli sınıflandırma.
+          wet: yağış > 0,5 mm
+          damp: yağış <= 0,5 mm ama weather_code >= 51 (çiseleme)
+          dry: diğer
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['dry', 'damp', 'wet']
+      - name: time_source
+        description: >
+          actual: gerçek yarış saati kullanıldı (394 yarış)
+          assumed_14: saat verisi yok, yerel 14:00 varsayıldı (731 yarış)
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['actual', 'assumed_14']
