@@ -5,7 +5,8 @@ with sezon_kategori as (
         era_id,
         era_name,
         is_era_first_season,
-        count(*)                                                    as toplam_katilim,
+        count(*)                                    as toplam_katilim,
+        countif(did_start)                          as baslayan_katilim,   -- YENI
         count(distinct race_id)                                     as yaris_sayisi,
 
         countif(status_group = 'finished')                          as finished,
@@ -29,11 +30,11 @@ select
     yaris_sayisi,
     toplam_katilim,
 
-    round(dnf_toplam           / toplam_katilim * 100, 1) as dnf_orani,
-    round(dnf_mechanical       / toplam_katilim * 100, 1) as mekanik_orani,
-    round(dnf_incident         / toplam_katilim * 100, 1) as kaza_orani,
-    round(dnf_other            / toplam_katilim * 100, 1) as diger_orani,
-    round(dnf_team_or_external / toplam_katilim * 100, 1) as takim_hatasi_orani,
-    round((finished + finished_lapped) / toplam_katilim * 100, 1) as bitirme_orani
+    round(dnf_toplam           / baslayan_katilim * 100, 1) as dnf_orani,
+    round(dnf_mechanical       / baslayan_katilim * 100, 1) as mekanik_orani,
+    round(dnf_incident         / baslayan_katilim * 100, 1) as kaza_orani,
+    round(dnf_other            / baslayan_katilim * 100, 1) as diger_orani,
+    round(dnf_team_or_external / baslayan_katilim * 100, 1) as takim_hatasi_orani,
+    round((finished + finished_lapped) / baslayan_katilim * 100, 1) as bitirme_orani
 
 from sezon_kategori

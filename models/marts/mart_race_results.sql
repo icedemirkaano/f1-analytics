@@ -38,18 +38,19 @@ select
     f.is_win,
     f.is_pole,
     f.is_dnf,
+    f.is_dns,
+    f.did_start,
     f.is_classified,
     f.pit_lane_start,
     f.is_era_first_season,
-
     -- dashboard icin hazir gruplamalar
     case
-        when f.grid_position <= 3  then '1-3'
-        when f.grid_position <= 6  then '4-6'
-        when f.grid_position <= 10 then '7-10'
+        when f.grid_position is null then 'gride cikmadi'
+        when f.grid_position <= 3    then '1-3'
+        when f.grid_position <= 6    then '4-6'
+        when f.grid_position <= 10   then '7-10'
         else '11+'
     end as grid_grubu,
-
     case
         when f.team_form_5_pos is null    then 'veri yok'
         when f.team_form_5_pos <= 6       then 'cok iyi (1-6)'

@@ -27,7 +27,8 @@ tum_kayitlar as (
     select
         circuit_name,
         circuit_country,
-        count(*)                                                   as toplam_katilim,
+        count(*)                    as toplam_katilim,
+        countif(did_start)          as baslayan_katilim,
         count(distinct race_id)                                    as yaris_sayisi,
         countif(is_dnf)                                            as dnf_sayisi,
         countif(status_group = 'dnf_incident')                     as kaza_sayisi,
