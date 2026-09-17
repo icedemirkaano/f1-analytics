@@ -58,20 +58,49 @@ models:
         description: Sezon içi yarış sırası
 
   - name: stg_status
-    description: DNF ve bitiş durumlarının 5 kategoriye gruplanmış hali
+    description: >
+      Yarış sonucu durum kodlarının kategori eşlemesi.
+      dns kategorisi bu iterasyonda ayrıldı: 'Did not qualify',
+      'Did not prequalify', 'Withdrew' ve '107% Rule' değerleri
+      yarışa hiç başlamamış sürücülere ait, DNF sayılmamalı.
     columns:
       - name: status_id
-        tests: [unique, not_null]
+        description: Birincil anahtar
+        tests:
+          - unique
+          - not_null
+
+      - name: status_text
+        description: Ergast'ın ham durum metni
+
       - name: status_group
         description: >
-          finished, finished_lapped, dnf_mechanical, dnf_incident,
-          dnf_other, dnf_team_or_external.
-          dnf_other içinde yarışa hiç başlamamış kayıtlar da var.
+          Sekiz kategoriye indirgenmiş durum.
+          dns yarışa başlamayanlar, dnf_* terk edenler,
+          finished* bitirenler.
         tests:
+          - not_null
           - accepted_values:
               arguments:
-                values: ['finished', 'finished_lapped', 'dnf_mechanical',
-                         'dnf_incident', 'dnf_other', 'dnf_team_or_external']
+                values:
+                  - finished
+                  - finished_lapped
+                  - dns
+                  - dnf_incident
+                  - dnf_mechanical
+                  - dnf_team_or_external
+                  - dnf_other
+                  - dnf_unclassified
+
+      - name: did_start
+        description: >
+          Araç fiilen gride çıktı mı. Oran hesaplarında payda
+          olarak kullanılır.
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "= (status_group != 'dns')"
 
   - name: stg_drivers
     columns:
@@ -87,3 +116,32 @@ models:
     columns:
       - name: circuit_id
         tests: [unique, not_null]
+
+  - name: stg_race_weather
+    description: >
+      Yarış günü hava durumu. Open-Meteo Historical API'den çekildi.
+      Ölçüm penceresi: yarış başlangıç saati + sonraki 2 saat.
+    columns:
+      - name: race_id
+        description: races tablosuna yabancı anahtar
+        tests: [unique, not_null]
+      - name: precip_total_mm
+        description: 3 saatlik pencerede toplam yağış (mm)
+      - name: weather_condition
+        description: >
+          Üç kademeli sınıflandırma.
+          wet: yağış > 0,5 mm
+          damp: yağış <= 0,5 mm ama weather_code >= 51 (çiseleme)
+          dry: diğer
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['dry', 'damp', 'wet']
+      - name: time_source
+        description: >
+          actual: gerçek yarış saati kullanıldı (394 yarış)
+          assumed_14: saat verisi yok, yerel 14:00 varsayıldı (731 yarış)
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['actual', 'assumed_14']

@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: int_pre_race_features
+    description: >
+      Yarış öncesi özellik tablosu. Sürücü-yarış granülaritesinde.
+      Form metrikleri sızıntısız hesaplandı (mevcut yarış hariç).
+    columns:
+      - name: result_id
+        tests: [unique, not_null]
+      - name: grid_position
+        description: >
+          Pit lane düzeltmesi uygulanmış grid pozisyonu.
+          Ham veride 0 olan kayıtlar o yarıştaki MAX(grid) + 1 yapıldı.
+      - name: pit_lane_start
+        description: Ham grid değeri 0 ise true (pit lane başlangıcı)
+      - name: team_form_5_pos
+        description: >
+          Takımın önceki 5 yarıştaki ortalama bitiş sırası.
+          Sezon içinde kalır, mevcut yarış dahil değil.
+      - name: driver_form_5_pos
+        description: Sürücünün önceki 5 yarıştaki ortalama bitiş sırası
+      - name: form_race_count
+        description: >
+          Form kaç yarışa dayanıyor (0-5). Sezon başında düşük,
+          güvenilirlik göstergesi olarak kullanılmalı.
+      - name: quali_gap_teammate_ms
+        description: >
+          Sürücünün takım arkadaşına göre quali süre farkı (ms).
+          Negatif = takım arkadaşından hızlı.
+          Sadece takımda tam 2 sürücü varsa hesaplanır.
+      - name: teammate_finish_gap
+        description: >
+          Takım arkadaşına göre bitiş sırası farkı.
+          Negatif = takım arkadaşından önde bitirdi.
+      - name: grid_delta
+        description: >
+          grid_position - position_order. Pozitif = pozisyon kazandı.
+          UYARI: Türetilmiş sütun, modele girmemeli.
+
+  - name: int_results_modern_points
+    description: >
+      2010-2018 puan sistemi 1995-2024 sonuçlarına uygulandı.
+      Karşı-olgusal şampiyonluk analizi için.
+    columns:
+      - name: result_id
+        tests: [unique, not_null]
+      - name: points_modern
+        description: >
+          25-18-15-12-10-8-6-4-2-1 sistemiyle hesaplanmış puan.
+          Sadece finish_position dolu olanlar puan alır (DNF = 0).
+          Yarım puanlı yarışlarda (2009 Malezya, 2021 Belçika) yarıya bölünür.
+      - name: is_half_points
+        description: Yarım puanlı yarış mı
