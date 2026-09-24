@@ -232,3 +232,10 @@ dbt_packages/
 logs/
 # end dbt Cloud content
 dbt_internal_packages/
+
+# Power BI
+*.pbix
+*.pbit
+
+# Ham veri (Ergast/Kaggle lisansi)
+data/raw/
